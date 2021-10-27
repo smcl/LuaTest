@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Lua Fun";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Quick 'n' Dirty Lua/.NET interop demo</h1>
+</div>
+
+ <form method="post" action="/Lua/Post" >
+  <textarea name="snippet" rows="16" cols="80" style="font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;">
+-- dotnet_add is a function I wrote in C# in the LuaEnvironment class
+foo = 10 + 30 * dotnet_add(5, 2)
+
+-- if you specify a variable (like "foo") in the text field it'll try to
+-- retrieve that from the Lua intepreter and return that in the response
+-- otherwise it'll take the value returned at the end ("sean is cool")
+return "sean is cool"
+  </textarea> 
+  <br />
+  <br />
+  <input type="text" placeholder="foo" name="returnVariable" style="font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;">
+  <input value="Run" type="submit">
+</form>
+
