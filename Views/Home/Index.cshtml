@@ -8,8 +8,13 @@
 
  <form method="post" action="/Lua/Post" >
   <textarea name="snippet" rows="16" cols="80" style="font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;">
--- dotnet_add is a function I wrote in C# in the LuaEnvironment class
+-- dotnet_add is a static function I wrote in C# in the LuaEnvironment class
 foo = 10 + 30 * dotnet_add(5, 2)
+
+-- dotnet_get_mystery_number() is an instance method on LuaEnvironment which
+-- accesses a private property intialized in the ctor (just to demo how the 
+-- function needn't be static)
+foo = foo + dotnet_get_mystery_number()
 
 -- if you specify a variable (like "foo") in the text field it'll try to
 -- retrieve that from the Lua intepreter and return that in the response

@@ -48,18 +48,6 @@ namespace LuaTest
 
             app.UseAuthorization();
 
-            //var state = new Lua();
-
-
-            //var res = state.DoString(@"
-            //    foo = 10 + 30 * dotnet_add(5, 2)
-
-            //    return ""sean is cool""
-            //");
-            
-            
-            //Console.WriteLine(state["foo"]);
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
@@ -67,7 +55,5 @@ namespace LuaTest
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
-
-
     }
 }
