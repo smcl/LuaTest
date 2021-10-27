@@ -8,11 +8,13 @@ namespace LuaTest
         private Lua _lua;
         private int _mysteryNumber;
 
-        public LuaEnvironment()
+        public LuaEnvironment(AgreementService agreementService)
         {
             _lua = new Lua();
             _lua.RegisterFunction("dotnet_add", null, typeof(LuaEnvironment).GetMethod(nameof(Add)));
             _lua.RegisterFunction("dotnet_get_mystery_number", this, typeof(LuaEnvironment).GetMethod(nameof(Mystery)));
+
+            _lua["agreementService"] = agreementService;
 
             _mysteryNumber = new Random().Next();
         }

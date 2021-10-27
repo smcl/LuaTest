@@ -16,6 +16,18 @@ foo = 10 + 30 * dotnet_add(5, 2)
 -- function needn't be static)
 foo = foo + dotnet_get_mystery_number()
 
+-- agreementService is a C# class, annoyingly I've not been able to iterate over
+-- an IEnumerable<T> using Lua's "Generic for", so we have a nice old-fashioned
+-- array and a for with an increment
+agreements = agreementService:GetAgreements()
+for i=0, agreements.Length-1 do
+    if agreements[i].Enabled then
+        print(agreements[i].Id, agreements[i].DisplayName)
+    else
+        print(agreements[i].Id, "(disabled)")
+    end
+end
+
 -- if you specify a variable (like "foo") in the text field it'll try to
 -- retrieve that from the Lua intepreter and return that in the response
 -- otherwise it'll take the value returned at the end ("sean is cool")
